@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Peminjam;
+use Yajra\Datatables\Html\Builder;
+use Yajra\Datatables\Datatables;
 
 class PeminjamsController extends Controller
 {
@@ -11,9 +14,11 @@ class PeminjamsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request, Builder $htmlBuilder)
     {
         //
+        $peminjam = Peminjam::all();
+        return view('peminjams.index',compact('peminjam'));
     }
 
     /**
@@ -24,6 +29,8 @@ class PeminjamsController extends Controller
     public function create()
     {
         //
+        $peminjam = Peminjam::all();
+        return view('peminjams.create',compact('peminjam'));
     }
 
     /**
@@ -35,6 +42,12 @@ class PeminjamsController extends Controller
     public function store(Request $request)
     {
         //
+        $peminjam = new Peminjam();
+        $barang->nama = $request->nama;
+        $barang->kelas = $request->kelas;
+        $barang->nama_barang = $request->nama_barang;
+        $barang->save();
+        return redirect('/admin/peminjams');
     }
 
     /**
@@ -57,6 +70,8 @@ class PeminjamsController extends Controller
     public function edit($id)
     {
         //
+        $peminjam=Peminjam::find($id);
+        return view('peminjams.edit')->with(compact('peminjam'));
     }
 
     /**
@@ -69,6 +84,13 @@ class PeminjamsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        // $peminjam = Peminjam::findOrFail($id);
+       
+        // $barang->jumlah_barang = $request->jumlah_barang;
+        
+        // $barang->kondisi_barang = $request->kondisi_barang;
+        // $barang->save();
+        // return redirect('/admin/peminjams');
     }
 
     /**

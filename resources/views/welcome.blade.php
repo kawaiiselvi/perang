@@ -6,7 +6,7 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">Hallo</div>
                 <div class="panel-body">
-                    Selamat Datang Di Peminjaman Barang
+                    Selamat Datang Di Peminjaman Barang!^^
                 </div>
             </div>
         </div>

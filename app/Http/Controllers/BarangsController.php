@@ -83,12 +83,12 @@ class BarangsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $barangs = Barang::findOrFail($id);
-        $barangs->nama_barang = $request->a;
-        $barangs->jumlah_barang = $request->b;
-        $barangs->stock_barang = $request->c;
-        $barangs->kondisi_barang = $request->d;
-        $barangs->save();
+        $barang = Barang::findOrFail($id);
+       
+        $barang->jumlah_barang = $request->jumlah_barang;
+        
+        $barang->kondisi_barang = $request->kondisi_barang;
+        $barang->save();
         return redirect('/admin/barangs');
     }
 
@@ -101,8 +101,11 @@ class BarangsController extends Controller
     public function destroy($id)
     {
         //
-        $barangs = Barang::findOrFail($id);
-        $barangs->delete();
-        return redirect('/admin/barangs');
-    }
+        if(!Barang::destroy($id))  return redirect()->back();
+        Session::flash("flash_notification", [
+            "level"=>"success",
+            "message"=>"Penulis Berhasil Dihapus"]);
+        return redirect()->route('barangs.index');
+
+     }
 }

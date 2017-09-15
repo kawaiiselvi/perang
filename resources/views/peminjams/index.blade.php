@@ -2,31 +2,28 @@
 @section('content')
 <div class="container">
 <div class="row">
-	<center><h1>Data Barang</h1></center>
+	<center><h1>Data Peminjam</h1></center>
 	<div class="panel panel-primary">
-		<div class="panel-heading">Data Barang
-		<div class="panel-title pull-right"><a href="/admin/barangs/create">Tambah</a></div></div>
+		<div class="panel-heading">Data Peminjam
+		<div class="panel-title pull-right"><a href="/admin/peminjams/create">Tambah</a></div></div>
 		<div class="panel-body">
 			<table class="table">
 				<thead>
 					<tr>
+						<th>Nama</th>
+						<th>Kelas</th>
 						<th>Nama Barang</th>
-						<th>Jumlah Barang</th>
-						<th>Stok Barang</th>
-						<th>Kondisi Barang</th>
-						<th colspan="3">Action</th>
 					</tr>
 				</thead>
 				<tbody>
-				@foreach($barang as $data)
+				@foreach($peminjam as $data)
 					<tr>
+						<td>{{$data->nama}}</td>
+						<td>{{$data->kelas}}</td>
 						<td>{{$data->nama_barang}}</td>
-						<td>{{$data->jumlah_barang}}</td>
-						<td>{{$data->stock_barang}}</td>
-						<td>{{$data->kondisi_barang}}</td>
-						<td><a class="btn btn-warning" href="/admin/barangs/{{$data->id}}/edit">Edit</a></td>
+						<td><a class="btn btn-warning" href="/admin/peminjams/{{$data->id}}/edit">Edit</a></td>
 							<td><!-- <form action="{{route('barangs.destroy',$data->id)}}" method="post"> -->
-							<form action="{{route('barangs.destroy',$data->id)}}" method = "post">
+							<form action="{{route('peminjams.destroy',$data->id)}}" method = "post">
 								<input type="hidden" name="_method" value="DELETE">
 								<input type="hidden" name="_token">
 								<input type="submit" class="btn btn-danger" value="Delete">
