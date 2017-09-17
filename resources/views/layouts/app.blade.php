@@ -48,14 +48,20 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                     @if (Auth::check())
-                    <li><a href="{{ url('/home') }}">Home</a></li>
-                    <!-- <li><a href="{{ route('barangs.index') }}">Barang</a></li> -->
-                    <li><a href="{{ url('/peminjam') }}">Peminjam</a></li>
-                    @endif
+                    <li><a href="{{ url('/home') }}">Home</a></li><!-- 
+                    <li><a href="{{ route('barangs.index') }}">Barang</a></li>
+                    <li><a href="{{ url('/peminjam') }}">Peminjam</a></li> -->
+                    
 
                     @role('admin')
-                    <li><a href="{{ route('barangs.index') }}">Barang</a></li>
+                    <li><a href="{{ url('/admin/barangs') }}">Barang</a></li>
                     @endrole
+
+                    @role('member')
+                    <li><a href="{{ url('/member/barangs') }}">Barang</a></li>
+                    @endrole
+
+                    @endif
                 
                     </ul>
 
